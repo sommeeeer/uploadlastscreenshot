@@ -5,3 +5,9 @@ A way to upload your latest screenshot taken with printscreen. This little scrip
 Then giving you the link to the uploaded screenshot and putting it into clipboard. 
 
 Mainly made this script to be faster to send someone a link on IRC or other similar networks.
+
+# Installation and Usage
+```bash
+poetry install
+poetry run python main.py
+```
