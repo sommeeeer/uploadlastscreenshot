@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "uploadlastscreenshot"
+version = "0.1.0"
+description = "A tool for uploading the latest screenshot to my SFTP server in Ubuntu using the WM Waylander"
+authors = ["magnus <magnus@dahleide.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+paramiko = "^3.3.1"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
