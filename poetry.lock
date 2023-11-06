@@ -202,6 +202,19 @@ docs = ["sphinx (>=1.6.5)", "sphinx-rtd-theme"]
 tests = ["hypothesis (>=3.27.0)", "pytest (>=3.2.1,!=3.3.0)"]
 
 [[package]]
+name = "pysftp"
+version = "0.2.9"
+description = "A friendly face on SFTP"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pysftp-0.2.9.tar.gz", hash = "sha256:fbf55a802e74d663673400acd92d5373c1c7ee94d765b428d9f977567ac4854a"},
+]
+
+[package.dependencies]
+paramiko = ">=1.17"
+
+[[package]]
 name = "python-dotenv"
 version = "1.0.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -218,4 +231,4 @@ cli = ["click (>=5.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5ac1e4a23e1bd69fe4419fe429512649933a68732ee138c713b4ff818105eb4c"
+content-hash = "b1c6a759682647eb9d106422941c0735f2159065cd2f7cc469522144bfcfd4ab"
