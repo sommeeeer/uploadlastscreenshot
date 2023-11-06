@@ -1,7 +1,8 @@
 import os
 from pathlib import Path
-import paramiko
 
+import paramiko
+import pyperclip
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,8 +32,9 @@ sftp.put(
     Path(os.getenv("REMOTE_PATH")).joinpath(file_to_save),
 ),
 
+pyperclip.copy(f"{os.getenv('URL_TO_SERVER')}{file_to_save}")
 print(f'File "{newest_file_path.name}" uploaded to "{os.getenv("REMOTE_PATH")}"')
-print(f"Link: ttp://magnus.dahleide.com/screenshots/{file_to_save}")
+print(f"Link: {os.getenv('URL_TO_SERVER')}{file_to_save}")
 
 sftp.close()
 ssh.close()
