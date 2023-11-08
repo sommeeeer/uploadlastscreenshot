@@ -17,21 +17,25 @@ newest_file_path, newest_timestamp = max(file_timestamps, key=lambda x: x[1])
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-ssh.connect(
-    hostname=os.getenv('SFTP_HOSTNAME'),
-    port=os.getenv('SFTP_PORT'),
-    username="magnus",
-    password=os.getenv('SFTP_PASSWORD'),
-    look_for_keys=False,
-    allow_agent=False,
-)
+try:
+    ssh.connect(
+        hostname=os.getenv("SFTP_HOSTNAME"),
+        port=os.getenv("SFTP_PORT"),
+        username="magnus",
+        password=os.getenv("SFTP_PASSWORD"),
+        look_for_keys=False,
+        allow_agent=False,
+    )
 
-sftp = ssh.open_sftp()
-file_to_save = newest_file_path.name.replace(" ", "_")
-sftp.put(
-    newest_file_path.absolute(),
-    f"{os.getenv('REMOTE_PATH')}{file_to_save}",
-),
+    sftp = ssh.open_sftp()
+    file_to_save = newest_file_path.name.replace(" ", "_")
+    sftp.put(
+        newest_file_path.absolute(),
+        f"{os.getenv('REMOTE_PATH')}{file_to_save}",
+    ),
+except Exception as e:
+    print(e)
+    exit(1)
 
 pyperclip.copy(f"{os.getenv('URL_TO_SERVER')}{file_to_save}")
 print(f'File "{newest_file_path.name}" uploaded to "{os.getenv("REMOTE_PATH")}"')
